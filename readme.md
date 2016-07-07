@@ -1,3 +1,3 @@
 # Catita 
 
-This is work logger/time tracking app.
+This is a work logger/time tracking app.
