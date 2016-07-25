@@ -7,6 +7,7 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use App\Models as Models;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -29,4 +30,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    /**
+     * The user has many workLogs
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function workLogs() {
+        return $this->hasMany(Models\WorkLog::class);
+    }
 }
