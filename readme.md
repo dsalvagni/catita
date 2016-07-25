@@ -41,5 +41,7 @@ Clone this repository.
 Rename `.env.sample` to `.env` and add real configuration.
 
 > php artisan migrate
+
 > php artisan db:seed
+
 > php -S localhost:8000 -t public
