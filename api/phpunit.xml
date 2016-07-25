@@ -10,7 +10,7 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="Application Test Suite">
+        <testsuite name="Catita Api Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
@@ -24,6 +24,15 @@
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
+        <env name="APP_DEBUG" value="true"/>
+        <env name="APP_KEY" value="801a7f23ec2ee2b9231846f4114314eb"/>
+        <env name="DB_CONNECTION" value="mysql"/>
+        <env name="DB_HOST" value="localhost"/>
+        <env name="DB_PORT" value="3306"/>
+        <env name="DB_DATABASE" value="catita_testing"/>
+        <env name="DB_USERNAME" value="catita_test"/>
+        <env name="DB_PASSWORD" value="secret"/>
+        <env name="CACHE_DRIVER" value="memcached"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
     </php>
 </phpunit>

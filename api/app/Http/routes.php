@@ -14,3 +14,11 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers\v1'], function () use ($app) {
+    $app->get('worklogs', ['uses' => 'WorkLogsController@index']);
+    $app->get('worklogs/{id}', ['uses' => 'WorkLogsController@show']);
+    $app->delete('worklogs/{id}', ['uses' => 'WorkLogsController@destroy']);
+    $app->put('worklogs/{id}', ['uses' => 'WorkLogsController@update']);
+    $app->post('worklogs', ['uses' => 'WorkLogsController@create']);
+});

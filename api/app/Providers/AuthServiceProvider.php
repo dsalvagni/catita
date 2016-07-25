@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\WorkLog;
+use App\Policies\WorkLogPolicy;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -31,9 +33,16 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
+            /**
+             * While user api are not ready.
+             */
+            return User::find(1);
+
+            /*if ($request->input('api_token')) {
                 return User::where('api_token', $request->input('api_token'))->first();
-            }
+            }*/
         });
+
+        Gate::policy(WorkLog::class, WorkLogPolicy::class);
     }
 }
