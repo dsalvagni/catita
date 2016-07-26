@@ -6,4 +6,4 @@ machine:
     America/Sao_Paulo
 
   php:
-    version: 5.5.11
+    version: 5.6
