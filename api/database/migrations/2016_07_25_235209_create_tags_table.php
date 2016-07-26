@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorklogsTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,10 @@ class CreateWorklogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('worklogs', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('description');
-            $table->dateTime('started_at');
-            $table->dateTime('finished_at');
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +28,6 @@ class CreateWorklogsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('worklogs');
+        Schema::drop('tags');
     }
 }

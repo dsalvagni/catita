@@ -16,9 +16,20 @@ $app->get('/', function () use ($app) {
 });
 
 $app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers\v1'], function () use ($app) {
-    $app->get('worklogs', ['uses' => 'WorkLogsController@index']);
-    $app->get('worklogs/{id}', ['uses' => 'WorkLogsController@show']);
-    $app->delete('worklogs/{id}', ['uses' => 'WorkLogsController@destroy']);
-    $app->put('worklogs/{id}', ['uses' => 'WorkLogsController@update']);
-    $app->post('worklogs', ['uses' => 'WorkLogsController@create']);
+    /**
+     * WORKLOGS
+     */
+    $app->get('worklogs', ['uses' => 'WorklogsController@index']);
+    $app->get('worklogs/{id}', ['uses' => 'WorklogsController@show']);
+    $app->delete('worklogs/{id}', ['uses' => 'WorklogsController@destroy']);
+    $app->put('worklogs/{id}', ['uses' => 'WorklogsController@update']);
+    $app->post('worklogs', ['uses' => 'WorklogsController@create']);
+    /**
+     * TAGS
+     */
+    $app->get('tags', ['uses' => 'TagsController@index']);
+    $app->get('tags/{id}', ['uses' => 'TagsController@show']);
+    $app->delete('tags/{id}', ['uses' => 'TagsController@destroy']);
+    $app->put('tags/{id}', ['uses' => 'TagsController@update']);
+    $app->post('tags', ['uses' => 'TagsController@create']);
 });
