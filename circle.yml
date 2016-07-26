@@ -11,6 +11,8 @@ machine:
 dependencies:
   pre:
     - mysql -u ubuntu < create-database-and-permissions-testing.sql
+    - mysql -u ubuntu < create-database-and-permissions-development.sql
+    - mysql -u ubuntu < create-database-and-permissions-staging.sql
   post:
     - php artisan migrate --env=testing
     - php artisan db:seed --env=testing
