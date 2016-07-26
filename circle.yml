@@ -1,0 +1,12 @@
+machine:
+  timezone:
+    America/Sao_Paulo
+
+  php:
+    version: 5.5.11
+
+  dependencies:
+    post:
+      - composer install
+      - php artisan migrate --env=$ENVIRONMENT
+      - php artisan db:seed --env=$ENVIRONMENT
