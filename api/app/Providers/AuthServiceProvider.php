@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\WorkLog;
-use App\Policies\WorkLogPolicy;
+use App\Models\Worklog;
+use App\Models\Tag;
+use App\Policies\WorklogPolicy;
+use App\Policies\TagPolicy;
 use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -43,6 +45,7 @@ class AuthServiceProvider extends ServiceProvider
             }*/
         });
 
-        Gate::policy(WorkLog::class, WorkLogPolicy::class);
+        Gate::policy(Worklog::class, WorklogPolicy::class);
+        Gate::policy(Tag::class, TagPolicy::class);
     }
 }

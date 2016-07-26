@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
-class Worklog extends Model
+class Tag extends Model
 {
 
     /**
@@ -18,19 +17,17 @@ class Worklog extends Model
     ];
 
     /**
-     * Get the user that owns the worklog.
+     * Get the user that owns the tag.
      */
     public function user()
     {
         return $this->belongsTo(\App\User::class);
     }
-
     /**
-     * The worklog may have many tags
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * Get the related worklog.
      */
-    public function tags()
+    public function worklog()
     {
-        return $this->belongsToMany(Tag::class,'worklog_tag');
+        return $this->belongsToMany(\App\Models\Worklog::class,'worklog_tag');
     }
 }

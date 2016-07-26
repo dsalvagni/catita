@@ -36,6 +36,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function workLogs() {
-        return $this->hasMany(Models\WorkLog::class);
+        return $this->hasMany(Models\Worklog::class);
+    }
+    /**
+     * The user may have tags
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tags() {
+        return $this->hasMany(Models\Tag::class);
     }
 }

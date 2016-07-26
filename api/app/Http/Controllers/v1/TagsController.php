@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\v1;
 
-use App\Models\Worklog;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
-class WorklogsController extends \App\Http\Controllers\Controller
+class TagsController extends \App\Http\Controllers\Controller
 {
     protected $validation = [
         'description' => 'required',
@@ -21,11 +21,11 @@ class WorklogsController extends \App\Http\Controllers\Controller
      *
      * @return void
      */
-    public function __construct(Worklog $workLog)
+    public function __construct(Tag $tag)
     {
 
         $this->middleware('auth');
-        $this->workLog = $workLog;
+        $this->tag = $tag;
         $this->user = Auth::user();
     }
 
@@ -35,46 +35,46 @@ class WorklogsController extends \App\Http\Controllers\Controller
      */
     public function index(Request $request)
     {
-        return response($request->user()->workLogs);
+        return response($request->user()->tags);
     }
 
     /**
-     * Return a worklog
-     * @param $id worklog id
+     * Return a tag
+     * @param $id tag id
      * @return Response
      */
     public function show($id)
     {
-        $workLog = $this->workLog->find($id);
+        $tag = $this->tag->find($id);
 
-        if (Gate::denies('show', $workLog)) {
+        if (Gate::denies('show', $tag)) {
             return response('', Response::HTTP_FORBIDDEN);
         }
 
-        if (!$workLog) {
+        if (!$tag) {
             return response('', Response::HTTP_NOT_FOUND);
         }
-        return response($workLog->load('tags'));
+        return response($tag);
     }
 
     /**
-     * Delete a worklog from the database
+     * Delete a tag from the database
      * @param Request $request
      * @param $id
      * @return Response
      */
     public function destroy(Request $request, $id)
     {
-        $workLog = $this->workLog->find($id);
-        if (Gate::denies('destroy', $workLog)) {
+        $tag = $this->tag->find($id);
+        if (Gate::denies('destroy', $tag)) {
             return response('', Response::HTTP_FORBIDDEN);
         }
-        $workLog->delete();
+        $tag->delete();
         return response('', Response::HTTP_NO_CONTENT);
     }
 
     /**
-     * Update a given worklog
+     * Update a given tag
      * @param Request $request
      * @param $id
      * @return Response
@@ -82,22 +82,19 @@ class WorklogsController extends \App\Http\Controllers\Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, $this->validation);
-        $workLog = $this->workLog->find($id);
-        if (Gate::denies('update', $workLog)) {
+        $tag = $this->tag->find($id);
+        if (Gate::denies('update', $tag)) {
             return response('', Response::HTTP_FORBIDDEN);
         }
 
         $input = $request->all();
-        if($request->has('tags')) {
-            $workLog->tags()->sync($request->get('tags'));
-        }
-        $workLog->update($input);
+        $tag->update($input);
 
-        return response($workLog->load('tags'));
+        return response($tag);
     }
 
     /**
-     * Create new worklog
+     * Create new tag
      * @param Request $request
      * @return Response
      */
@@ -107,11 +104,7 @@ class WorklogsController extends \App\Http\Controllers\Controller
         $this->validate($request, $this->validation);
 
         $input = $request->all();
-        $model = new Worklog($input);
-        $this->user->workLogs()->save($model);
-        if($request->has('tags')) {
-            $model->tags()->attach($request->get('tags'));
-        }
-        return response($model->load('tags'));
+        $model = $this->user->tags()->save(new Tag($input));
+        return response($model);
     }
 }
