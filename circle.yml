@@ -9,7 +9,8 @@ machine:
     version: 5.5.11
 
 dependencies:
+  pre:
+    - mysql -u ubuntu create-database-and-permissions-testing.sql
   post:
-    - composer install
     - php artisan migrate --env=testing
     - php artisan db:seed --env=testing
