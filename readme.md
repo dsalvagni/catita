@@ -1,4 +1,4 @@
-# Catita 
+# Catita [![CircleCI](https://circleci.com/gh/dsalvagni/catita.svg?style=svg)](https://circleci.com/gh/dsalvagni/catita)
 
 This is a work logger/time tracking app.
 
