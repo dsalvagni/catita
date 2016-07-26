@@ -1,3 +1,6 @@
+general:
+  build_dir: api
+  
 machine:
   timezone:
     America/Sao_Paulo
@@ -5,8 +8,8 @@ machine:
   php:
     version: 5.5.11
 
-  dependencies:
-    post:
-      - composer install
-      - php artisan migrate --env=$ENVIRONMENT
-      - php artisan db:seed --env=$ENVIRONMENT
+dependencies:
+  post:
+    - composer install
+    - php artisan migrate --env=$ENVIRONMENT
+    - php artisan db:seed --env=$ENVIRONMENT
