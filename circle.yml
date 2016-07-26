@@ -11,5 +11,5 @@ machine:
 dependencies:
   post:
     - composer install
-    - php artisan migrate --env=$ENVIRONMENT
-    - php artisan db:seed --env=$ENVIRONMENT
+    - php artisan migrate --env=testing
+    - php artisan db:seed --env=testing
