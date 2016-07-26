@@ -7,12 +7,3 @@ machine:
 
   php:
     version: 5.5.11
-
-dependencies:
-  pre:
-    - mysql -u ubuntu < ./../scripts/create-database-and-permissions-testing.sql
-    - mysql -u ubuntu < ./../scripts/create-database-and-permissions-development.sql
-    - mysql -u ubuntu < ./../scripts/create-database-and-permissions-staging.sql
-  post:
-    - php artisan migrate --env=testing
-    - php artisan db:seed --env=testing
