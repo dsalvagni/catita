@@ -5,7 +5,7 @@ This is a work logger/time tracking app.
 ## Quick start
 
 ### DB
-In the `scripts` folder you will find SQL script file to create the database and a user and his permissions for each environment.
+In the `scripts` folder you will find all SQL scripts to create the database and a user and his permissions for each environment.
 
 -----
 
