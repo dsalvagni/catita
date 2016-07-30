@@ -20,7 +20,7 @@ class WorkLogTableSeeder extends Seeder {
                 'description' => $faker->text,
                 'started_at' => $faker->dateTimeBetween('+0 days +0 hours', '+10 days +4 hours'),
                 'finished_at' => $faker->dateTimeBetween('+10 days +5 hours', '+20 days +23 hours'),
-                'user_id' => App\User::find(rand(1,2))->id
+                'user_id' => App\Models\User::find(rand(1,2))->id
             ]);
         }
 

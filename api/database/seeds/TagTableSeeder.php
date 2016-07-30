@@ -18,7 +18,7 @@ class TagTableSeeder extends Seeder {
         foreach (range(1,10) as $index) {
             \App\Models\Tag::create([
                 'description' => $faker->text,
-                'user_id' => App\User::find(rand(1,2))->id
+                'user_id' => App\Models\User::find(rand(1,2))->id
             ]);
         }
 
