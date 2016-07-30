@@ -21,13 +21,13 @@ class Tag extends Model
      */
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(User::class);
     }
     /**
      * Get the related worklog.
      */
     public function worklog()
     {
-        return $this->belongsToMany(\App\Models\Worklog::class,'worklog_tag');
+        return $this->belongsToMany(Worklog::class,'worklog_tag');
     }
 }

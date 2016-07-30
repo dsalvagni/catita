@@ -6,6 +6,7 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 class TestCase extends Laravel\Lumen\Testing\TestCase
 {
 
+    use DatabaseMigrations;
     use DatabaseTransactions;
 
     private $user;
@@ -16,17 +17,24 @@ class TestCase extends Laravel\Lumen\Testing\TestCase
      */
     public function createApplication()
     {
-        return require __DIR__.'/../bootstrap/app.php';
+        return require __DIR__ . '/../../bootstrap/app.php';
     }
 
     protected function createUser() {
         if(!$this->user)
-            $this->user = App\User::find(rand(1,2));
+            $this->user = App\Models\User::find(rand(1,2));
     }
 
 
     protected function getUser() {
         return $this->user;
+    }
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->artisan('db:seed');
+        $this->createUser();
     }
 
 }

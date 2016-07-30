@@ -5,16 +5,6 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class TagApiTest extends TestCase
 {
-    use DatabaseMigrations;
-    use DatabaseTransactions;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->artisan('db:seed');
-        $this->createUser();
-    }
-
     /**
      * A basic test example.
      *
