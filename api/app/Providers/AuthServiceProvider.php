@@ -9,7 +9,6 @@ use App\Models\Tag;
 use App\Policies\WorklogPolicy;
 use App\Policies\TagPolicy;
 use App\Policies\UserPolicy;
-use App\Policies\UserSessionPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -55,6 +54,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::policy(Worklog::class, WorklogPolicy::class);
         Gate::policy(Tag::class, TagPolicy::class);
         Gate::policy(User::class, UserPolicy::class);
-        Gate::policy(UserSession::class, UserSessionPolicy::class);
     }
 }
