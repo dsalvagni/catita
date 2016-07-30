@@ -32,4 +32,17 @@ $app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers\v1'], functio
     $app->delete('tags/{id}', ['uses' => 'TagsController@destroy']);
     $app->put('tags/{id}', ['uses' => 'TagsController@update']);
     $app->post('tags', ['uses' => 'TagsController@create']);
+    /**
+     * USERS
+     */
+    $app->get('me', ['uses' => 'UsersController@show']);
+    $app->put('me', ['uses' => 'UsersController@update']);
+    $app->delete('me', ['uses' => 'UsersController@destroy']);
+    $app->post('register', ['uses' => 'UsersController@create']);
+    /**
+     * AUTH
+     */
+    $app->get('session', ['uses' => 'SessionController@show']);
+    $app->post('session', ['uses' => 'SessionController@create']);
+    $app->delete('session', ['uses' => 'SessionController@destroy']);
 });
