@@ -36,6 +36,7 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @api {get} /worklogs Request all user's worklogs
     * @apiName GetWorklogs
     * @apiGroup Worklogs
+    * @apiVersion 0.0.1
     *
     * @apiSuccess {Integer} id           Worklog's id
     * @apiSuccess {String}  description  Worklog's description
