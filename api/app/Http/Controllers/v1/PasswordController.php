@@ -10,22 +10,35 @@ use Illuminate\Support\Facades\Mail;
 
 class PasswordController extends \App\Http\Controllers\Controller
 {
-
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Create e-mail reset password token
-     * @param Request $request
-     * @return Response
-     */
+    * Create e-mail reset password token
+    * @param Request $request
+    * @return Response
+    * @apiVersion 0.0.1
+    * @api {post} /password/request Create a reset password request
+    *
+    * @apiParam {String}  email    Users's description
+    *
+    * @apiName CreatePasswordResetRequest
+    * @apiGroup Password
+    * 
+    * @apiSuccess {Integer} id           Tag's id
+    * @apiSuccess {String}  description  Tag's description
+    * @apiSuccess {Integer} user_id      User's id
+    * @apiSuccess {String}  created_at   Tag created time
+    * @apiSuccess {String}  updated_at   Tag updated time
+    *
+    * @apiSuccessExample {json} Success-Response:
+    *     HTTP/1.1 201 OK
+    *
+    * @apiError UserNotFound The <code>email</code> was not found.
+    * @apiErrorExample {json} Error-Response:
+    *     HTTP/1.1 400 Bad Request
+    *
+    * @apiError Conflict There's a request to reset password already
+    * @apiErrorExample {json} Error-Response:
+    *     HTTP/1.1 410 Conflict
+    */
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -68,10 +81,31 @@ class PasswordController extends \App\Http\Controllers\Controller
 
 
     /**
-     * Create e-mail reset password token
-     * @param Request $request
-     * @return Response
-     */
+    * Update an user password
+    * @param Request $request
+    * @return Response
+    * @apiVersion 0.0.1
+    * @api {post} /password/reset Update an user password
+    *
+    * @apiParam {String}  email                    Users's description
+    * @apiParam {String}  password                 Users's description
+    * @apiParam {String}  password_confirmation    Users's description
+    * @apiParam {String}  reset_token              Users's description
+    *
+    * @apiName UpdateUserPassword
+    * @apiGroup Password
+    *
+    * @apiSuccessExample {json} Success-Response:
+    *     HTTP/1.1 204 No Content
+    *
+    * @apiError UserNotFound The <code>email</code> was not found.
+    * @apiErrorExample {json} Error-Response:
+    *     HTTP/1.1 400 Bad Request
+    *
+    * @apiError Gone The token was expired
+    * @apiErrorExample {json} Error-Response:
+    *     HTTP/1.1 410 Gone
+    */
     public function update(Request $request)
     {
 
