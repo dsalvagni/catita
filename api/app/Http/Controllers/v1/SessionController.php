@@ -103,8 +103,6 @@ class SessionController extends \App\Http\Controllers\Controller
 
         $input = $request->all();
 
-        $User = User::where('email', $input['email'])->first();
-
         if(!$User) {
             return response('', Response::HTTP_FORBIDDEN);
         }

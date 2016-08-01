@@ -51,7 +51,6 @@ class UsersController extends \App\Http\Controllers\Controller
     public function show()
     {
         $user = $this->user->find(Auth::user()->id);
-
         if (!$user) {
             return response('', Response::HTTP_FORBIDDEN);
         }
