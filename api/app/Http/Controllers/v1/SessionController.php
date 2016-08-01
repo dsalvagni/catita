@@ -24,22 +24,39 @@ class SessionController extends \App\Http\Controllers\Controller
     }
 
     /**
-     * Delete an user session
-     * @return Response
-     */
-    public function destroy()
-    {
-        Token::clear();
-        return response('', Response::HTTP_NO_CONTENT);
-    }
+    * Get an user session
+    *
+    * @api {get} /session/ Request a Session
+    * @apiVersion 0.0.1
+    * @apiName GetSession
+    * @apiGroup Session
+    *
+    * @apiSuccess {Integer} id         User's id
+    * @apiSuccess {String}  name       User's name
+    * @apiSuccess {Integer} email      User's email
+    * @apiSuccess {Integer} api_token  Session api_token
+    *
+    * @apiSuccessExample {json} Success-Response:
+    *     HTTP/1.1 200 OK
+    *     {
+    *       "id": 1,
+    *       "name": "Daniel Salvagni",
+    *       "email": "danielsalvagni@gmail.com",
+    *       "api_token": "..."
+    *     }
 
-    /**
-     * Get an user session
-     * @return Response
-     */
+    * @apiError Forbidden The <code>user</code> are not authenticated
+    * @apiErrorExample {json} Error-Response:
+    *     HTTP/1.1 403 Forbidden
+    */
     public function show()
     {
         $User = Auth::user();
+
+        if(!$User) {
+            return response('', Response::HTTP_FORBIDDEN);
+        }
+
         return response([
             'id' => $User->id,
             'name' => $User->name,
@@ -49,10 +66,36 @@ class SessionController extends \App\Http\Controllers\Controller
     }
 
     /**
-     * Create new user
-     * @param Request $request
-     * @return Response
-     */
+    * Create new session
+    * @param Request $request
+    * @return Response
+    *
+    * @api {post} /session/ Create a Session
+    * @apiVersion 0.0.1
+    * @apiName CreateSession
+    * @apiGroup Session
+    *
+    * @apiParam {String}  email        User's email
+    * @apiParam {String} password      User's password
+    *
+    * @apiSuccess {Integer} id         User's id
+    * @apiSuccess {String}  name       User's name
+    * @apiSuccess {Integer} email      User's email
+    * @apiSuccess {Integer} api_token  Session api_token
+    *
+    * @apiSuccessExample {json} Success-Response:
+    *     HTTP/1.1 200 OK
+    *     {
+    *       "id": 1,
+    *       "name": "Daniel Salvagni",
+    *       "email": "danielsalvagni@gmail.com",
+    *       "api_token": "..."
+    *     }
+
+    * @apiError Forbidden The <code>user</code> are not authenticated
+    * @apiErrorExample {json} Error-Response:
+    *     HTTP/1.1 403 Forbidden
+    */
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -64,9 +107,12 @@ class SessionController extends \App\Http\Controllers\Controller
 
         $User = User::where('email', $input['email'])->first();
 
-        if (Hash::check($input['password'], $User->password)) {
+        if(!$User) {
+            return response('', Response::HTTP_FORBIDDEN);
+        }
 
-            Token::create($User->id);
+        if (Hash::check($input['password'], $User->password)) {
+            Token::create($User->id,$User->password);
 
             return response([
                 'id' => $User->id,
