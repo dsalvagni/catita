@@ -73,7 +73,7 @@ class SessionController extends \App\Http\Controllers\Controller
                 'name' => $User->name,
                 'email' => $User->email,
                 'api_token' => (string) Token::getToken()
-            ]);
+            ], Response::HTTP_CREATED);
         }
         return response('', Response::HTTP_FORBIDDEN);
     }

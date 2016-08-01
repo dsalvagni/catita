@@ -112,6 +112,6 @@ class WorklogsController extends \App\Http\Controllers\Controller
         if($request->has('tags')) {
             $model->tags()->attach($request->get('tags'));
         }
-        return response($model->load('tags'));
+        return response($model->load('tags'), Response::HTTP_CREATED);
     }
 }

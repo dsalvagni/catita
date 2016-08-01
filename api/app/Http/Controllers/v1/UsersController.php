@@ -91,7 +91,7 @@ class UsersController extends \App\Http\Controllers\Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3',
-            'password'=> 'required||confirmed|min:6|max:255',
+            'password'=> 'required|confirmed|min:6|max:255',
             'email' => 'required|email|unique:users|min:6',
         ]);
         $input = $request->all();
@@ -105,6 +105,6 @@ class UsersController extends \App\Http\Controllers\Controller
             'name'         =>   $model->name,
             'email'        =>   $model->email,
             'api_token'    =>   $model->getApiToken()
-        ]);
+        ], Response::HTTP_CREATED);
     }
 }

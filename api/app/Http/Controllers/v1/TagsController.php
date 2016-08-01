@@ -105,6 +105,6 @@ class TagsController extends \App\Http\Controllers\Controller
 
         $input = $request->all();
         $model = $this->user->tags()->save(new Tag($input));
-        return response($model);
+        return response($model, Response::HTTP_CREATED);
     }
 }

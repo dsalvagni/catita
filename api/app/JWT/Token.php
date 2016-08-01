@@ -20,7 +20,7 @@ class Token
         self::$token = null;
     }
 
-    public static function create($uid, $expiration = (3600 * 24 * 7))
+    public static function create($uid, $expiration = 604800)
     {
         $signer = self::getSigner();
 
