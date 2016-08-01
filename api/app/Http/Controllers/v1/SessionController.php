@@ -27,6 +27,7 @@ class SessionController extends \App\Http\Controllers\Controller
     * Get an user session
     *
     * @api {get} /session/ Request a Session
+    * @apiVersion 0.0.1
     * @apiName GetSession
     * @apiGroup Session
     *
@@ -70,6 +71,7 @@ class SessionController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {post} /session/ Create a Session
+    * @apiVersion 0.0.1
     * @apiName CreateSession
     * @apiGroup Session
     *

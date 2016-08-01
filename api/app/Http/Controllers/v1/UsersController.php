@@ -29,6 +29,7 @@ class UsersController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {get} /me Request the logged user
+    * @apiVersion 0.0.1
     * @apiName GetUser
     * @apiGroup Users
     *
@@ -66,6 +67,7 @@ class UsersController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {delete} /me Delete a user
+    * @apiVersion 0.0.1
     * @apiName DeleteUser
     * @apiGroup Users
     * @apiSuccessExample {json} Success-Response:
@@ -97,6 +99,7 @@ class UsersController extends \App\Http\Controllers\Controller
     * @param Request $request
     * @return Response
     * @api {put} /me Update a User
+    * @apiVersion 0.0.1
     *
     * @apiParam {String}  [name]                      User's name
     * @apiParam {String}  [email]                     User's email
@@ -156,6 +159,7 @@ class UsersController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {post} /users Create a User
+    * @apiVersion 0.0.1
     *
     * @apiParam {String}  name                      User's name
     * @apiParam {String}  email                     User's email

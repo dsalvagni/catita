@@ -34,6 +34,7 @@ class TagsController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {get} /tags Request all user's tags
+    * @apiVersion 0.0.1
     * @apiName GetTags
     * @apiGroup Tags
     *
@@ -72,6 +73,7 @@ class TagsController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {get} /tags/:id Request a tag
+    * @apiVersion 0.0.1
     * @apiParam {Integer} id Tag's unique ID.
     * @apiName GetTag
     * @apiGroup Tags
@@ -121,6 +123,7 @@ class TagsController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {delete} /tags/:id Delete a tag
+    * @apiVersion 0.0.1
     * @apiParam {Integer} id Tag's unique ID.
     * @apiName DeleteTag
     * @apiGroup Tags
@@ -158,7 +161,8 @@ class TagsController extends \App\Http\Controllers\Controller
     * @param $id
     * @return Response
     *
-    * @api {put} /tags/:id Update a tag    
+    * @api {put} /tags/:id Update a tag 
+    * @apiVersion 0.0.1   
     * @apiParam {Integer} id             Tag's unique ID.
     * @apiParam {String}  description    Tag's description
     * @apiParam {Integer} user_id        User's id
@@ -216,6 +220,7 @@ class TagsController extends \App\Http\Controllers\Controller
     * @param Request $request
     * @return Response
     * @api {post} /tags Create a tag
+    * @apiVersion 0.0.1
     *
     * @apiParam {String}  description    Tag's description
     * @apiParam {Integer} user_id        User's id

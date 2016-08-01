@@ -78,6 +78,7 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @return Response
     * 
     * @api {get} /worklogs/:id Request all user's worklogs
+    * @apiVersion 0.0.1
     *    
     * @apiParam {Integer} id Worklog's unique ID.
     * @apiName GetWorklog
@@ -133,7 +134,8 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @param $id
     * @return Response
     *
-    * @api {delete} /worklogs/:id Delete a tag
+    * @api {delete} /worklogs/:id Delete a worklog
+    * @apiVersion 0.0.1
     *
     * @apiParam {Integer} id Worklog's unique ID.
     * @apiName DeleteWorklog
@@ -172,7 +174,8 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @param $id
     * @return Response
     *
-    * @api {put} /worklogs/:id Update a worklog    
+    * @api {put} /worklogs/:id Update a worklog   
+    * @apiVersion 0.0.1 
     * @apiParam {Integer} id Worklog's unique ID.
     * @apiName UpdateWorklog
     * @apiGroup Worklogs
@@ -237,6 +240,7 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @return Response
     *
     * @api {post} /worklogs Create a worklog    
+    * @apiVersion 0.0.1
     * @apiParam {Integer} id Worklog's unique ID.
     * @apiName CreateWorklog
     * @apiGroup Worklogs
