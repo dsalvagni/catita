@@ -37,6 +37,8 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @apiName GetWorklogs
     * @apiGroup Worklogs
     * @apiVersion 0.0.1
+    * @apiDescription It should return all worklogs from the logged user.
+    * There's no kind of pagination or filter.
     *
     * @apiSuccess {Integer} id           Worklog's id
     * @apiSuccess {String}  description  Worklog's description
@@ -84,6 +86,8 @@ class WorklogsController extends \App\Http\Controllers\Controller
     * @apiParam {Integer} id Worklog's unique ID.
     * @apiName GetWorklog
     * @apiGroup Worklogs
+    * @apiDescription It should return a worklog by a given id.
+    * It also returns the worklog related tags.
     *
     * @apiSuccess {Integer} id           Worklog's id
     * @apiSuccess {String}  description  Worklog's description

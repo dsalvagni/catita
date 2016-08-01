@@ -37,6 +37,8 @@ class TagsController extends \App\Http\Controllers\Controller
     * @apiVersion 0.0.1
     * @apiName GetTags
     * @apiGroup Tags
+    * @apiDescription This service should return all tags from (and only) a logged user.
+    * It will return all registers, without any kind of pagination.
     *
     * @apiSuccess {Integer} id           Tag's id
     * @apiSuccess {String}  description  Tag's description
@@ -77,6 +79,8 @@ class TagsController extends \App\Http\Controllers\Controller
     * @apiParam {Integer} id Tag's unique ID.
     * @apiName GetTag
     * @apiGroup Tags
+    * @apiDescription This service should return a Tag by a given id.
+    * It will return only if it is related to the logged user.
     *
     * @apiSuccess {Integer} id           Tag's id
     * @apiSuccess {String}  description  Tag's description
@@ -127,6 +131,9 @@ class TagsController extends \App\Http\Controllers\Controller
     * @apiParam {Integer} id Tag's unique ID.
     * @apiName DeleteTag
     * @apiGroup Tags
+    * @apiDescription This service should delete a tag by a given id.
+    * It will be able to only delete tags from the logged user.
+    * 
     * @apiSuccessExample {json} Success-Response:
     *     HTTP/1.1 204 OK
     *
@@ -171,7 +178,9 @@ class TagsController extends \App\Http\Controllers\Controller
     *
     * @apiName UpdateTag
     * @apiGroup Tags
-    * 
+    * @apiDescription This service should update a given tag. 
+    * It must be able to remove only related logged user's tag. 
+    *
     * @apiSuccess {Integer} id           Tag's id
     * @apiSuccess {String}  description  Tag's description
     * @apiSuccess {Integer} user_id      User's id
@@ -229,7 +238,9 @@ class TagsController extends \App\Http\Controllers\Controller
     *
     * @apiName CreateTag
     * @apiGroup Tags
-    * 
+    * @apiDescription This service should create a Tag. 
+    * An user can only create tags to his own. 
+    *
     * @apiSuccess {Integer} id           Tag's id
     * @apiSuccess {String}  description  Tag's description
     * @apiSuccess {Integer} user_id      User's id

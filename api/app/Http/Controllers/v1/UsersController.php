@@ -32,6 +32,7 @@ class UsersController extends \App\Http\Controllers\Controller
     * @apiVersion 0.0.1
     * @apiName GetUser
     * @apiGroup Users
+    * @apiDescription This service should return the current information about the logged user.
     *
     * @apiSuccess {Integer} id           User's id
     * @apiSuccess {String}  name         User's name
@@ -66,10 +67,13 @@ class UsersController extends \App\Http\Controllers\Controller
     * Soft-delete an user
     * @return Response
     *
-    * @api {delete} /me Delete a user
+    * @api {delete} /me Delete an user
     * @apiVersion 0.0.1
     * @apiName DeleteUser
     * @apiGroup Users
+    * @apiDescription This service will soft-delete the logged user. It means that the user 
+    * won't be removed from the database. There's no option to undo this action.
+    * 
     * @apiSuccessExample {json} Success-Response:
     *     HTTP/1.1 204 OK
     *
@@ -98,8 +102,12 @@ class UsersController extends \App\Http\Controllers\Controller
     * Update a given user
     * @param Request $request
     * @return Response
-    * @api {put} /me Update a User
+    * @api {put} /me Update an User
     * @apiVersion 0.0.1
+    * @apiDescription This service should update the user information based in the new data inputs.
+    * It can be used to update the user password, as well.
+    *
+    * (*) Password confirmation is only required when `password` is sent.
     *
     * @apiParam {String}  [name]                      User's name
     * @apiParam {String}  [email]                     User's email
@@ -158,8 +166,10 @@ class UsersController extends \App\Http\Controllers\Controller
     * @param Request $request
     * @return Response
     *
-    * @api {post} /users Create a User
+    * @api {post} /users Create an User
     * @apiVersion 0.0.1
+    * @apiDescription This service should register a new user to the system.
+    * It will return a token to the client and it must be used on each request.
     *
     * @apiParam {String}  name                      User's name
     * @apiParam {String}  email                     User's email

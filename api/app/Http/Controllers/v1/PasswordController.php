@@ -97,6 +97,8 @@ class PasswordController extends \App\Http\Controllers\Controller
     *
     * @apiName UpdateUserPassword
     * @apiGroup Password
+    * @apiDescription This service should update an user password by given new password. 
+    * It requires a valid token that is sent by email.
     *
     * @apiSuccessExample {json} Success-Response:
     *     HTTP/1.1 204 No Content
