@@ -21,6 +21,9 @@ class PasswordController extends \App\Http\Controllers\Controller
     *
     * @apiName CreatePasswordResetRequest
     * @apiGroup Password
+    * @apiDescription This service should create a new password reset request.
+    * It will send an e-mail to the request with an token and a link to set 
+    * a new password.
     * 
     * @apiSuccess {Integer} id           Tag's id
     * @apiSuccess {String}  description  Tag's description

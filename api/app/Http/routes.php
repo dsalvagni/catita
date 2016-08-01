@@ -44,7 +44,6 @@ $app->group(['prefix' => 'v1','namespace' => 'App\Http\Controllers\v1'], functio
      */
     $app->get('session', ['uses' => 'SessionController@show']);
     $app->post('session', ['uses' => 'SessionController@create']);
-    $app->delete('session', ['uses' => 'SessionController@destroy']);
     /**
      * PASSWORD
      */
