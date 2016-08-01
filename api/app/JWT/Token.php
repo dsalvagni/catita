@@ -20,7 +20,7 @@ class Token
         self::$token = null;
     }
 
-    public static function create($uid, $expiration = (3600 * 24 * 7))
+    public static function create($uid, $password, $expiration = 86400 /* 24h */)
     {
         $signer = self::getSigner();
 
@@ -30,6 +30,7 @@ class Token
             ->setIssuedAt(time())
             ->setExpiration(time() + $expiration)
             ->set('uid', $uid)
+            ->set('pass', $password)
             ->sign($signer, env('APP_KEY'))
             ->getToken();
 
